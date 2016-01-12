@@ -38,30 +38,29 @@
 </head>
 <body>
     <form method="post" name="mailer" action="example.php" enctype="multipart/form-data">
-	<table border="1">
-	<tr>
-	<td>Select client mail : <input type="file" name="client-mail" value=""/></td>
-	<td>Select sender mail : <input type="file" name="sender-mail" value=""/></td>
-	</tr>
-	<tr>
-	<td>No of mail/time slot : <input type="text" name="nompts" value="" /></td>
-	<td>Time interval/slot : <select name="tips" size="1">
-	<option value="60">1 Minute</option>
-	<option value="180">3 Minute</option>
-	<option value="300">5 Minute</option>
-	<option value="480">8 Minute</option>
-	<option value="720">12 Minute</option>
-	<option value="900">15 Minute</option>
-	<option value="1200">20 Minute</option>
-	</select>
-	</td>
-	</tr>
-	<tr><td>
-	Header : <textarea name="header"></textarea>
-	</td><td>
-	Subject : <textarea name="subject"></textarea>
-	</td></tr>
-	</table>
+		<table border="1">
+			<tr>
+				<td>Select client mail : <input type="file" name="client-mail" value=""/></td>
+				<td>Select sender mail : <input type="file" name="sender-mail" value=""/></td>
+			</tr>
+			<tr>
+				<td>No of mail/time slot : <input type="text" name="nompts" value="" /></td>
+				<td>Time interval/slot : <select name="tips" size="1">
+				<option value="60">1 Minute</option>
+				<option value="180">3 Minute</option>
+				<option value="300">5 Minute</option>
+				<option value="480">8 Minute</option>
+				<option value="720">12 Minute</option>
+				<option value="900">15 Minute</option>
+				<option value="1200">20 Minute</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Header : <textarea name="header"></textarea></td>
+				<td>Subject : <textarea name="subject"></textarea></td>
+			</tr>
+		</table>
         <p>
             My Editor:<br>
             <textarea name="editor1">&lt;p&gt;Write your mail here...&lt;/p&gt;</textarea>

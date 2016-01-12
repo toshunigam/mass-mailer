@@ -72,51 +72,53 @@ error_reporting(E_ALL ^ E_NOTICE);
 <div id="progress" style="width:500px;border:1px solid #ccc;"></div>
 <!-- Progress information -->
 <div id="information" style="width"></div>
-<table border="1">
-
 <?php
-ob_end_flush();
-define('TOTAL', (int)$_POST['nompts']);
+	ob_end_flush();
+	define('TOTAL', (int)$_POST['nompts']);
 
-$total = (int)$_POST['nompts'];
-$start = 1;
-$p = 2;
-$outerlooop = $data->sheets[0]['numRows']/$total;
-$total1 = $data->sheets[0]['numRows'];
-for($i = 1; $i <= $outerlooop; $i++){
-	for($j = $start; $j<=$total; $j++){
-		if(!empty($data->sheets[0]['cells'][$j][2])){
-			$to = $data->sheets[0]['cells'][$j][2];
-			if($p<= $sender->sheets[0]['numRows']){
-			$from = $sender->sheets[0]['cells'][$p][2];
-			}else{
-			$p = 2;
-			$from = $sender->sheets[0]['cells'][$p][2];
+	$total      = (int)$_POST['nompts'];
+	$start      = 1;
+	$p          = 2;
+	$outerlooop = $data->sheets[0]['numRows']/$total;
+	$total1     = $data->sheets[0]['numRows'];
+	
+	for($i = 1; $i <= $outerlooop; $i++)
+	{
+		for($j = $start; $j<=$total; $j++){
+			if(!empty($data->sheets[0]['cells'][$j][1]))
+			{
+				$to = $data->sheets[0]['cells'][$j][1];
+				if($p <= $sender->sheets[0]['numRows']){
+					$from = $sender->sheets[0]['cells'][$p][1];
+				}else{
+					$p = 2;
+					$from = $sender->sheets[0]['cells'][$p][1];
+				}
+				echo "<p>".$to.'---------'.$from."</p><br/>";
+				//mail($to, $from, $message, $header);
 			}
-			echo "<p>".$to.'---------'.$from."</p><br/>";
-			//mail($to, $from, $message, $header);
-		}
-	}
-	$p++;
-	$start = $start+TOTAL;
-	$total = $total+TOTAL;
-	// Calculate the percentation
-    $percent = intval($i/$outerlooop * 100)."%";
-    // Javascript for updating the progress bar and information
-    echo '<script language="javascript">
-    document.getElementById("progress").innerHTML="<div style=\"width:'.$percent.';background-image:url(progress-bar/pbar-ani.gif);\">&nbsp;</div>";
-    document.getElementById("information").innerHTML="<p style=\"color:red;\">'.$i.' slot is procesing.</p>";
-    </script>';		
-	//echo "<p>".$data->sheets[0]['cells'][$i][2]."</p><br/>";
-	echo str_repeat(' ',24*64);
+		}//end loop 2nd
+		$p++;
+		$start   = $start+TOTAL;
+		$total   = $total+TOTAL;
+		// Calculate the percentation
+		$percent = intval($i/$outerlooop * 100)."%";
+		
+		// Javascript for updating the progress bar and information
+		echo '<script language="javascript">
+		document.getElementById("progress").innerHTML="<div style=\"width:'.$percent.';background-image:url(progress-bar/pbar-ani.gif);\">&nbsp;</div>";
+		document.getElementById("information").innerHTML="<p style=\"color:red;\">'.$i.' slot is procesing.</p>";
+		</script>';		
+		//echo "<p>".$data->sheets[0]['cells'][$i][2]."</p><br/>";
+		echo str_repeat(' ',24*64);
 		// Send output to browser immediately
 		flush();
 		// Sleep one second so we can see the delay
 		sleep(3);
-} 
-echo '<script language="javascript">document.getElementById("information").innerHTML="<p style=\"color:green;\">Process completed.</p>"</script>';
-//print_r($data);
-//print_r($data->formatRecords);
+	}//end loop 1st
+	echo '<script language="javascript">document.getElementById("information").innerHTML="<p style=\"color:green;\">Process completed.</p>"</script>';
+	//print_r($data);
+	//print_r($data->formatRecords);
 ?>
 </body>
 </html>
