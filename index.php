@@ -46,7 +46,7 @@
 			<tr>
 				<td>No of mail/time slot : <input type="text" name="nompts" value="" /></td>
 				<td>Time interval/slot : <select name="tips" size="1">
-				<option value="60">1 Minute</option>
+				<option value="2">1 Minute</option>
 				<option value="180">3 Minute</option>
 				<option value="300">5 Minute</option>
 				<option value="480">8 Minute</option>
