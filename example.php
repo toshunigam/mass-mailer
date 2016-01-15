@@ -108,8 +108,8 @@ for($i = 1; $i <= $outerlooop; $i++){// this one is outer loop
 				$p = 2;
 				$from = $sender->sheets[0]['cells'][$p][1];
 			}
-			echo "<p>".$to.'---------'.$from."</p><br/>";
-			/*$mail = new PHPMailer;
+			//echo "<p>".$to.'---------'.$from."</p><br/>";
+			$mail = new PHPMailer;
 
 			$mail->IsSMTP();                       // Set mailer to use SMTP
 			$mail->Host       = 'yourhost.com';    // Specify main and backup server
@@ -134,7 +134,7 @@ for($i = 1; $i <= $outerlooop; $i++){// this one is outer loop
 			   echo 'Message could not be sent.';
 			   echo 'Mailer Error: ' . $mail->ErrorInfo;
 			   exit;
-			}*/
+			}
 
 			//echo 'Message has been sent';
 
